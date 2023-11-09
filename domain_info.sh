@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # telling the user to enter a domain name
 echo "Please type in a domain"
@@ -18,4 +18,4 @@ dns-info() {
 #
 
 # call the function
-dns-info 
+dns-info > dns_info.txt
