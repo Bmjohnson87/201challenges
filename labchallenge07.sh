@@ -50,31 +50,3 @@
 # -E 'extended regexp'
 # grep a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern
 
-
-
-# display system information
-echo "system information"
-
-#CPU INFORMATION
-echo "CPU:"
-    lshw -c cpu | grep -E 'name|vendor|physical id|width'
-
-#RAM INFORMATION    
-echo "Ram:"
-    lshw -c ram | grep -E 'description|physical id|size'
-
-
-# Display adapter information
-echo "Display adapter:"
-    lshw -c display adapter | grep -E 'description|product|vendor|physical id|bus info|width|clock|capabilities|configuration|resources'
-
-# Network adapter information
-echo "Network adapter:"
-    lshw -c network adapter | grep -E 'description|product|vendor|physical|bus info|logical name|version|serial|size|capacity|width|clock|capabilities|configuration|resources'
-
- 
-
-
-
-
-done
