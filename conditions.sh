@@ -8,22 +8,21 @@
 #Your script must use at least one array, one loop, and one conditional.
 
 # Declare an array
-files=(file23.txt file33.txt file1.txt file03.txt)
+files=("file23.txt" "file33.txt" "file1.txt" "file03.txt")
 
 # For Loop that does a check for each file in my array
-for file in "$files[@]"
-do 
+for file in "${files[@]}"; do
+
     # condition: check if files exist
     # if files exist, print a statement that file exists
-    if [-f "$file"]; then
+    if [ -e "$file" ]; then
     echo "$file exists."
 
    #if files doesn't exist; print file doesn't exist
    # create file if it doesnt exist
     else
-    echo "$file doesn't exist."
-    touch $file 
-    echo "file created."
+    touch "$file"
+    echo "file created: $file"
 
     fi 
 
