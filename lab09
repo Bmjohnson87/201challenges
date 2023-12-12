@@ -1,0 +1,14 @@
+# Retrieve all events from the System log in the last 24 hours
+Get-WinEvent -LogName System -FilterXPath "@System['TimeCreated'] -gt (Get-Date).AddHours(-24)" | Out-File -FilePath "$env:userprofile\Desktop\last_24.txt" -Force
+
+# Retrieve all "error" events from the System log
+Get-WinEvent -LogName System -FilterXPath "@System['EventRecordID'] = 1" | Out-File -FilePath "$env:userprofile\Desktop\errors.txt" -Force
+
+# Print all events with ID 16 from the System log
+Get-WinEvent -LogName System -FilterXPath "@System['EventRecordID'] = 16" | Select-Object -ExpandProperty TimeCreated, EntryType, Source, Message
+
+# Print the 20 most recent entries from the System log
+Get-WinEvent -LogName System | Select-Object -Last 20 TimeCreated, EntryType, Source, Message
+
+# Get all sources of the 500 most recent entries in the System log with full source names
+Get-WinEvent -LogName System | Select-Object -Last 500 -ExpandProperty Source | ForEach-Object { Get-WinEvent -LogName System -FilterXPath "@System['Source']='$it'" | Select-Object -Last 1 TimeCreated, EntryType, Source, Message }
